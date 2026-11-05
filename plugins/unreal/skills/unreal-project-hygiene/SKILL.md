@@ -2,7 +2,7 @@
 name: unreal-project-hygiene
 description: Checks an Unreal Engine 5 project folder without opening the editor - .uproject and .uplugin JSON, modules missing their Build.cs, missing Editor/Game Target.cs, headers where .generated.h is not the last include or GENERATED_BODY is missing, raw UObject pointers without UPROPERTY that the garbage collector can free, and Git setup (.gitignore, LFS for .uasset/.umap, tracked Binaries/Intermediate). Use when an Unreal project fails to open or compile, "modules are missing or built with a different engine version", random crashes from dangling pointers, before committing an Unreal project to Git, or when auditing an Unreal repo.
 license: MIT
-compatibility: Python 3.9+, standard library only. Unreal itself is not required. Optional git for tracked-file checks.
+compatibility: Python 3.10+, standard library only. Unreal itself is not required. Optional git for tracked-file checks.
 metadata:
   author: gamedev-toolkit
   version: "0.1.0"

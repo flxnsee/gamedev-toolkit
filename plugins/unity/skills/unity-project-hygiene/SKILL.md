@@ -2,7 +2,7 @@
 name: unity-project-hygiene
 description: Checks a Unity project for the version-control problems behind "Missing Script", swapped or lost references and unmergeable scenes - assets without .meta files, orphan .meta files, duplicate or malformed GUIDs, binary scenes and prefabs, wrong Asset Serialization mode, hidden meta files, a bad .gitignore and tracked Library/ folders. Use when references break after a pull or merge, after copying assets between projects outside Unity, before a first commit, when setting up Unity with Git, or when the user asks to audit or clean up a Unity repo. Also gives safe rules for AI agents editing Unity files.
 license: MIT
-compatibility: Python 3.9+, standard library only. Unity itself is not required. Optional git for tracked-file checks.
+compatibility: Python 3.10+, standard library only. Unity itself is not required. Optional git for tracked-file checks.
 metadata:
   author: gamedev-toolkit
   version: "0.1.0"

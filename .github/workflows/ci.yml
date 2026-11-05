@@ -7,11 +7,12 @@ on:
 
 jobs:
   validate-and-test:
+    timeout-minutes: 10
     strategy:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
-        python: ["3.9", "3.13"]
+        python: ["3.10", "3.13"]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
@@ -24,12 +25,36 @@ jobs:
         run: python -m unittest discover tests -v
 
   blender-smoke:
+    # Official tarballs instead of snap: snapd on GitHub runners can hang for hours.
+    # Tests the oldest supported LTS and the newest LTS.
     runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        blender: ["4.2.23", "5.2.3"]
     steps:
       - uses: actions/checkout@v4
-      - name: Install Blender
-        run: sudo snap install blender --classic
+      - name: Install system libraries Blender links against
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install -y -q --no-install-recommends \
+            libxi6 libxxf86vm1 libxfixes3 libxrender1 libxkbcommon0 libsm6 libice6 libgl1 libegl1
+      - name: Cache Blender
+        id: cache
+        uses: actions/cache@v4
+        with:
+          path: ~/blender
+          key: blender-${{ matrix.blender }}-linux-x64
+      - name: Download Blender ${{ matrix.blender }}
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          V="${{ matrix.blender }}"
+          SERIES="${V%.*}"
+          mkdir -p ~/blender
+          curl -fsSL --retry 3 "https://download.blender.org/release/Blender${SERIES}/blender-${V}-linux-x64.tar.xz" \
+            | tar -xJ -C ~/blender --strip-components=1
+      - name: Blender version
+        run: ~/blender/blender --version | head -1
       - name: Blender smoke test (audit + export for every engine)
-        env:
-          BLENDER: /snap/bin/blender
-        run: python3 -m unittest tests.test_blender -v
+        run: BLENDER="$HOME/blender/blender" python3 -m unittest tests.test_blender -v
