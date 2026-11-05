@@ -1,0 +1,19 @@
+{
+  "name": "unreal-doctor",
+  "version": "0.1.0",
+  "description": "Unreal Engine 5 skills: C++ gameplay conventions and a project hygiene checker.",
+  "author": {
+    "name": "flxnsee",
+    "url": "https://github.com/flxnsee"
+  },
+  "license": "MIT",
+  "keywords": [
+    "gamedev",
+    "agent-skills",
+    "unreal",
+    "ue5",
+    "cpp"
+  ],
+  "homepage": "https://github.com/flxnsee/gamedev-doctor",
+  "repository": "https://github.com/flxnsee/gamedev-doctor"
+}

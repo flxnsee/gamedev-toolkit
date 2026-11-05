@@ -1,4 +1,4 @@
-# Contributing to gamesmith
+# Contributing to gamedev-doctor
 
 Thanks for helping! New skills, fixes to engine facts, and new checks are all welcome.
 
@@ -6,7 +6,7 @@ Thanks for helping! New skills, fixes to engine facts, and new checks are all we
 
 ```
 .claude-plugin/marketplace.json      # lists every plugin
-plugins/gamesmith-<area>/
+plugins/<engine>-doctor/             # or plugins/gamedev-core/ (engine-agnostic)
   .claude-plugin/plugin.json         # name must match the marketplace entry
   skills/<skill-name>/
     SKILL.md                         # frontmatter + instructions (< 500 lines)
@@ -35,7 +35,7 @@ tools/validate_skills.py             # spec + manifest validator (runs in CI)
 
 ## Adding a skill
 
-1. Create `plugins/gamesmith-<area>/skills/<skill-name>/SKILL.md`. The `name` must equal
+1. Create `plugins/<engine>-doctor/skills/<skill-name>/SKILL.md`. The `name` must equal
    the folder name (lowercase, digits, single hyphens).
 2. If it has a script, add a fixture under `tests/fixtures/` with planted problems *and*
    clean files, and tests in `tests/` that assert both.
@@ -49,5 +49,5 @@ tools/validate_skills.py             # spec + manifest validator (runs in CI)
 
 ## Adding an engine
 
-Create `plugins/gamesmith-<engine>/` with a `plugin.json` and add it to
+Create `plugins/<engine>-doctor/` with a `plugin.json` and add it to
 `.claude-plugin/marketplace.json`. The validator fails if a plugin folder isn't listed.

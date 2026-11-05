@@ -1,0 +1,101 @@
+# Godot 4 CI: import, lint, export every preset, release on v* tags.
+# Copy to .github/workflows/godot-ci.yml. Preset names must match export_presets.cfg.
+name: godot-ci
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+  workflow_dispatch:
+
+env:
+  GODOT_VERSION: "4.5.1"     # exact version the project uses
+  GODOT_RELEASE: "stable"    # stable | rc1 | beta2 ...
+  PROJECT_PATH: "."          # folder containing project.godot
+
+defaults:
+  run:
+    shell: bash              # explicit bash enables pipefail on GitHub runners
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { name: windows, preset: "Windows Desktop", out: "windows/game.exe" }
+          - { name: linux,   preset: "Linux",           out: "linux/game.x86_64" }
+          - { name: macos,   preset: "macOS",           out: "macos/game.zip" }
+          - { name: web,     preset: "Web",             out: "web/index.html" }
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - name: Cache Godot and export templates
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/godot
+            ~/.local/share/godot/export_templates
+          key: godot-${{ env.GODOT_VERSION }}-${{ env.GODOT_RELEASE }}
+
+      - name: Install Godot and export templates
+        run: |
+          TAG="${GODOT_VERSION}-${GODOT_RELEASE}"
+          BASE="https://github.com/godotengine/godot-builds/releases/download/${TAG}"
+          TPL_DIR="$HOME/.local/share/godot/export_templates/${GODOT_VERSION}.${GODOT_RELEASE}"
+          if [ ! -x "$HOME/godot/godot" ]; then
+            mkdir -p "$HOME/godot"
+            curl -fsSL -o /tmp/godot.zip "${BASE}/Godot_v${TAG}_linux.x86_64.zip"
+            unzip -q /tmp/godot.zip -d "$HOME/godot"
+            mv "$HOME/godot/Godot_v${TAG}_linux.x86_64" "$HOME/godot/godot"
+          fi
+          if [ ! -d "$TPL_DIR" ]; then
+            curl -fsSL -o /tmp/templates.tpz "${BASE}/Godot_v${TAG}_export_templates.tpz"
+            unzip -q /tmp/templates.tpz -d /tmp/tpl
+            mkdir -p "$TPL_DIR"
+            mv /tmp/tpl/templates/* "$TPL_DIR/"
+          fi
+          echo "$HOME/godot" >> "$GITHUB_PATH"
+
+      - name: Lint (optional, uses tools/godot_lint.py from gamedev-doctor if present)
+        run: |
+          if [ -f tools/godot_lint.py ]; then python3 tools/godot_lint.py "$PROJECT_PATH"; else echo "no linter, skipping"; fi
+
+      - name: Import assets
+        run: godot --headless --path "$PROJECT_PATH" --import
+
+      - name: Export ${{ matrix.preset }}
+        run: |
+          OUT="$GITHUB_WORKSPACE/build/${{ matrix.out }}"
+          mkdir -p "$(dirname "$OUT")"
+          godot --headless --path "$PROJECT_PATH" --export-release "${{ matrix.preset }}" "$OUT" 2>&1 | tee export.log
+          test -e "$OUT" || { echo "::error::export produced no file"; exit 1; }
+          if grep -q "SCRIPT ERROR" export.log; then echo "::error::script errors during export"; exit 1; fi
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.name }}
+          path: build/${{ matrix.name }}
+          if-no-files-found: error
+
+  release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: export
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: dist
+      - name: Zip builds and create release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cd dist
+          for d in */; do (cd "$d" && zip -qr "../${d%/}.zip" .); done
+          gh release create "$GITHUB_REF_NAME" ./*.zip --repo "$GITHUB_REPOSITORY" --generate-notes

@@ -1,0 +1,21 @@
+{
+  "name": "blender-doctor",
+  "version": "0.1.0",
+  "description": "Blender skills: game-readiness scene audit and one-command export to Godot, Unity or Unreal.",
+  "author": {
+    "name": "flxnsee",
+    "url": "https://github.com/flxnsee"
+  },
+  "license": "MIT",
+  "keywords": [
+    "gamedev",
+    "agent-skills",
+    "blender",
+    "bpy",
+    "gltf",
+    "fbx",
+    "3d"
+  ],
+  "homepage": "https://github.com/flxnsee/gamedev-doctor",
+  "repository": "https://github.com/flxnsee/gamedev-doctor"
+}
