@@ -1,0 +1,35 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  validate-and-test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python: ["3.9", "3.13"]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Validate skills and manifests
+        run: python tools/validate_skills.py
+      - name: Unit tests
+        run: python -m unittest discover tests -v
+
+  blender-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Blender
+        run: sudo snap install blender --classic
+      - name: Blender smoke test (audit + export for every engine)
+        env:
+          BLENDER: /snap/bin/blender
+        run: python3 -m unittest tests.test_blender -v

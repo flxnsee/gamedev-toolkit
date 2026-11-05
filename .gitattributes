@@ -1,0 +1,4 @@
+* text=auto eol=lf
+*.unity binary
+*.png binary
+*.blend binary

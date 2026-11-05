@@ -1,0 +1,16 @@
+{
+  "name": "gamesmith-unity",
+  "version": "0.1.0",
+  "description": "Unity skills: .meta/GUID hygiene checker and batchmode tests and builds.",
+  "author": {
+    "name": "gamesmith contributors"
+  },
+  "license": "MIT",
+  "keywords": [
+    "gamedev",
+    "agent-skills",
+    "unity",
+    "csharp",
+    "ci"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "gamesmith-blender",
+  "version": "0.1.0",
+  "description": "Blender skills: game-readiness scene audit and one-command export to Godot, Unity or Unreal.",
+  "author": {
+    "name": "gamesmith contributors"
+  },
+  "license": "MIT",
+  "keywords": [
+    "gamedev",
+    "agent-skills",
+    "blender",
+    "bpy",
+    "gltf",
+    "fbx",
+    "3d"
+  ]
+}

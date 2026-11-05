@@ -1,0 +1,16 @@
+{
+  "name": "gamesmith-unreal",
+  "version": "0.1.0",
+  "description": "Unreal Engine 5 skills: C++ gameplay conventions and a project hygiene checker.",
+  "author": {
+    "name": "gamesmith contributors"
+  },
+  "license": "MIT",
+  "keywords": [
+    "gamedev",
+    "agent-skills",
+    "unreal",
+    "ue5",
+    "cpp"
+  ]
+}

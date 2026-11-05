@@ -1,0 +1,16 @@
+{
+  "name": "gamesmith-core",
+  "version": "0.1.0",
+  "description": "Engine-agnostic game-dev skills: repo setup with Git LFS, game feel, performance budgets.",
+  "author": {
+    "name": "gamesmith contributors"
+  },
+  "license": "MIT",
+  "keywords": [
+    "gamedev",
+    "agent-skills",
+    "git-lfs",
+    "game-feel",
+    "performance"
+  ]
+}

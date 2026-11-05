@@ -1,0 +1,16 @@
+{
+  "name": "gamesmith-godot",
+  "version": "0.1.0",
+  "description": "Godot 4 skills: idiomatic GDScript, a project linter and headless CI.",
+  "author": {
+    "name": "gamesmith contributors"
+  },
+  "license": "MIT",
+  "keywords": [
+    "gamedev",
+    "agent-skills",
+    "godot",
+    "gdscript",
+    "ci"
+  ]
+}

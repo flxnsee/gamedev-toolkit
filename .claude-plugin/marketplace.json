@@ -1,0 +1,34 @@
+{
+  "name": "gamesmith",
+  "description": "Game-dev skills for AI coding agents that run real scripts against your project: Blender, Godot, Unity, Unreal and engine-agnostic craft.",
+  "owner": {
+    "name": "gamesmith contributors"
+  },
+  "plugins": [
+    {
+      "name": "gamesmith-core",
+      "source": "./plugins/gamesmith-core",
+      "description": "Engine-agnostic skills: repo setup with Git LFS, game feel, performance budgets."
+    },
+    {
+      "name": "gamesmith-blender",
+      "source": "./plugins/gamesmith-blender",
+      "description": "Blender skills: game-readiness scene audit and one-command export to Godot, Unity or Unreal."
+    },
+    {
+      "name": "gamesmith-godot",
+      "source": "./plugins/gamesmith-godot",
+      "description": "Godot 4 skills: idiomatic GDScript, a project linter (Godot 3 leftovers, broken res:// paths) and headless CI."
+    },
+    {
+      "name": "gamesmith-unity",
+      "source": "./plugins/gamesmith-unity",
+      "description": "Unity skills: .meta/GUID hygiene checker and batchmode tests and builds."
+    },
+    {
+      "name": "gamesmith-unreal",
+      "source": "./plugins/gamesmith-unreal",
+      "description": "Unreal Engine 5 skills: C++ gameplay conventions and a project hygiene checker."
+    }
+  ]
+}
