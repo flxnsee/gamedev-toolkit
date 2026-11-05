@@ -1,4 +1,4 @@
-"""Tests for the deterministic gamesmith scripts. Run: python -m unittest discover tests"""
+"""Tests for the deterministic gamedev-toolkit scripts. Run: python -m unittest discover tests"""
 from __future__ import annotations
 
 import importlib.util
@@ -20,10 +20,10 @@ def load(rel: str, name: str):
     return mod
 
 
-godot_lint = load("plugins/gamesmith-godot/skills/godot-project-lint/scripts/godot_lint.py", "godot_lint")
-unity_check = load("plugins/gamesmith-unity/skills/unity-project-hygiene/scripts/unity_meta_check.py", "unity_check")
-ue_check = load("plugins/gamesmith-unreal/skills/unreal-project-hygiene/scripts/ue_project_check.py", "ue_check")
-gen_repo = load("plugins/gamesmith-core/skills/game-repo-setup/scripts/gen_repo_files.py", "gen_repo")
+godot_lint = load("plugins/godot/skills/godot-project-lint/scripts/godot_lint.py", "godot_lint")
+unity_check = load("plugins/unity/skills/unity-project-hygiene/scripts/unity_meta_check.py", "unity_check")
+ue_check = load("plugins/unreal/skills/unreal-project-hygiene/scripts/ue_project_check.py", "ue_check")
+gen_repo = load("plugins/core/skills/game-repo-setup/scripts/gen_repo_files.py", "gen_repo")
 validator = load("tools/validate_skills.py", "validator")
 
 

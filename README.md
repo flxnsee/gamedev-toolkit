@@ -1,21 +1,25 @@
-# gamesmith
+# 🧰 gamedev-toolkit
 
-**Game-dev skills for AI coding agents that run real checks on your project.**
+**The game-dev toolkit for AI coding agents: skills that know your engine, and checks that run on your real project.**
 
-Claude Code, Codex, Cursor and other agents write Godot 3 code in Godot 4 projects, lose
-Unity `.meta` files, forget `UPROPERTY` on pointers, and export Blender models rotated
--90°. gamesmith gives them engine-specific instructions **plus tested scripts** that
-inspect your actual project and report problems as JSON. No role-play agents, no
-"you are a senior game designer" prompts: just checks that run.
+Godot · Unity · Unreal · Blender · works with Claude Code, Codex, Cursor and any agent that
+supports [Agent Skills](https://agentskills.io/specification).
+
+AI coding agents write Godot 3 code in Godot 4 projects, lose Unity `.meta` files, forget
+`UPROPERTY` on pointers, and export Blender models rotated -90°. gamedev-toolkit gives them
+engine-specific know-how **plus tested scripts** that examine your actual project, find what
+is broken and say how to fix it. No role-play agents, no "you are a senior game designer"
+prompts: just tools that work.
 
 ```text
-$ python godot_lint.py my-game
-Godot 4 project: 48 scripts, 31 scenes, 12 resources, 214 res:// references checked
-6 errors, 1 warnings, 0 info
+$ python godot_lint.py tests/fixtures/godot4_project
+Godot 4 project: 2 scripts, 1 scenes, 0 resources, 10 res:// references checked
+16 errors, 1 warnings, 0 info
   [error] scenes/main.tscn:4 path-case: res://art/hero.png differs in letter case from res://Art/hero.png.
           Works in the editor on Windows/macOS, fails in exported builds and on Linux.
-  [error] scripts/player.gd:17 gd3-move-and-slide: Godot 4 `move_and_slide()` takes no arguments ...
-  [error] scripts/player.gd:18 gd3-yield: `yield()` was removed. Use `await obj.signal_name` ...
+  [error] scripts/player.gd:1 gd3-class: `KinematicBody2D` is a Godot 3 class. Godot 4 name: `CharacterBody2D`.
+  [error] scripts/player.gd:4 gd3-onready: `onready var` is Godot 3. Use `@onready var`.
+  ...
 ```
 
 ## Skills
@@ -43,20 +47,20 @@ Unity and Unreal checkers **don't need the engine installed**, so they run in CI
 ### Claude Code
 
 ```bash
-claude plugin marketplace add flxnsee/gamesmith
-claude plugin install gamesmith-godot@gamesmith      # or -core, -blender, -unity, -unreal
+claude plugin marketplace add flxnsee/gamedev-toolkit
+claude plugin install godot@gamedev-toolkit   # also: unity, unreal, blender, core
 ```
 
-Inside a session: `/plugin marketplace add flxnsee/gamesmith`, then `/plugin`.
+Inside a session: `/plugin marketplace add flxnsee/gamedev-toolkit`, then `/plugin`.
 Install only the engines you use. Skills trigger automatically from their descriptions.
 
 ### Any agent that supports Agent Skills (Codex, Cursor, Gemini CLI, ...)
 
 ```bash
-npx skills add flxnsee/gamesmith
+npx skills add flxnsee/gamedev-toolkit
 ```
 
-Or copy a skill folder (for example `plugins/gamesmith-godot/skills/godot-project-lint`)
+Or copy a skill folder (for example `plugins/godot/skills/godot-project-lint`)
 into your agent's skills directory. For Claude Code without plugins that's
 `~/.claude/skills/<skill-name>/`. Every skill follows the open
 [Agent Skills specification](https://agentskills.io/specification).
@@ -64,10 +68,10 @@ into your agent's skills directory. For Claude Code without plugins that's
 ### Just the scripts
 
 ```bash
-python plugins/gamesmith-godot/skills/godot-project-lint/scripts/godot_lint.py path/to/project
-python plugins/gamesmith-unity/skills/unity-project-hygiene/scripts/unity_meta_check.py path/to/project
-python plugins/gamesmith-unreal/skills/unreal-project-hygiene/scripts/ue_project_check.py path/to/project
-blender -b model.blend --python plugins/gamesmith-blender/skills/blender-scene-audit/scripts/scene_audit.py
+python plugins/godot/skills/godot-project-lint/scripts/godot_lint.py path/to/project
+python plugins/unity/skills/unity-project-hygiene/scripts/unity_meta_check.py path/to/project
+python plugins/unreal/skills/unreal-project-hygiene/scripts/ue_project_check.py path/to/project
+blender -b model.blend --python plugins/blender/skills/blender-scene-audit/scripts/scene_audit.py
 ```
 
 ## Try asking your agent

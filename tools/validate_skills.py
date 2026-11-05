@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the gamesmith repo: marketplace, plugin manifests and every SKILL.md.
+"""Validate the gamedev-toolkit repo: marketplace, plugin manifests and every SKILL.md.
 
 Checks the Agent Skills spec (https://agentskills.io/specification): name format and
 directory match, description length, compatibility length, body under 500 lines, and that

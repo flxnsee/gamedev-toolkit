@@ -13,8 +13,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 BLENDER = os.environ.get("BLENDER")
-AUDIT = ROOT / "plugins/gamesmith-blender/skills/blender-scene-audit/scripts/scene_audit.py"
-EXPORT = ROOT / "plugins/gamesmith-blender/skills/blender-export-to-engine/scripts/export_for_engine.py"
+AUDIT = ROOT / "plugins/blender/skills/blender-scene-audit/scripts/scene_audit.py"
+EXPORT = ROOT / "plugins/blender/skills/blender-export-to-engine/scripts/export_for_engine.py"
 
 
 def run_blender(*args: str) -> str:
