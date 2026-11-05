@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "description": "Unity skills: .meta/GUID hygiene checker and batchmode tests and builds.",
   "author": {
-    "name": "gamesmith contributors"
+    "name": "flxnsee",
+    "url": "https://github.com/flxnsee"
   },
   "license": "MIT",
   "keywords": [
@@ -12,5 +13,7 @@
     "unity",
     "csharp",
     "ci"
-  ]
+  ],
+  "homepage": "https://github.com/flxnsee/gamesmith",
+  "repository": "https://github.com/flxnsee/gamesmith"
 }

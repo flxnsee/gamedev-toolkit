@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "description": "Godot 4 skills: idiomatic GDScript, a project linter and headless CI.",
   "author": {
-    "name": "gamesmith contributors"
+    "name": "flxnsee",
+    "url": "https://github.com/flxnsee"
   },
   "license": "MIT",
   "keywords": [
@@ -12,5 +13,7 @@
     "godot",
     "gdscript",
     "ci"
-  ]
+  ],
+  "homepage": "https://github.com/flxnsee/gamesmith",
+  "repository": "https://github.com/flxnsee/gamesmith"
 }

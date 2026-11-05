@@ -2,7 +2,7 @@
   "name": "gamesmith",
   "description": "Game-dev skills for AI coding agents that run real scripts against your project: Blender, Godot, Unity, Unreal and engine-agnostic craft.",
   "owner": {
-    "name": "gamesmith contributors"
+    "name": "flxnsee"
   },
   "plugins": [
     {

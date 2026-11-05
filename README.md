@@ -43,17 +43,17 @@ Unity and Unreal checkers **don't need the engine installed**, so they run in CI
 ### Claude Code
 
 ```bash
-claude plugin marketplace add OWNER/gamesmith
+claude plugin marketplace add flxnsee/gamesmith
 claude plugin install gamesmith-godot@gamesmith      # or -core, -blender, -unity, -unreal
 ```
 
-Inside a session: `/plugin marketplace add OWNER/gamesmith`, then `/plugin`.
+Inside a session: `/plugin marketplace add flxnsee/gamesmith`, then `/plugin`.
 Install only the engines you use. Skills trigger automatically from their descriptions.
 
 ### Any agent that supports Agent Skills (Codex, Cursor, Gemini CLI, ...)
 
 ```bash
-npx skills add OWNER/gamesmith
+npx skills add flxnsee/gamesmith
 ```
 
 Or copy a skill folder (for example `plugins/gamesmith-godot/skills/godot-project-lint`)
