@@ -1,15 +1,15 @@
-# 🩺 gamedev-doctor
+# 🧰 gamedev-toolkit
 
-**`flutter doctor` for your game project, plus the skills your AI agent needs to fix what it finds.**
+**The game-dev toolkit for AI coding agents: skills that know your engine, and checks that run on your real project.**
 
 Godot · Unity · Unreal · Blender · works with Claude Code, Codex, Cursor and any agent that
 supports [Agent Skills](https://agentskills.io/specification).
 
 AI coding agents write Godot 3 code in Godot 4 projects, lose Unity `.meta` files, forget
-`UPROPERTY` on pointers, and export Blender models rotated -90°. gamedev-doctor gives them
-engine-specific instructions **plus tested scripts** that examine your actual project and
-report every problem with a fix. No role-play agents, no "you are a senior game designer"
-prompts: just checks that run.
+`UPROPERTY` on pointers, and export Blender models rotated -90°. gamedev-toolkit gives them
+engine-specific know-how **plus tested scripts** that examine your actual project, find what
+is broken and say how to fix it. No role-play agents, no "you are a senior game designer"
+prompts: just tools that work.
 
 ```text
 $ python godot_lint.py tests/fixtures/godot4_project
@@ -26,17 +26,17 @@ Godot 4 project: 2 scripts, 1 scenes, 0 resources, 10 res:// references checked
 
 | Plugin | Skill | What it does | Runs a script |
 | --- | --- | --- | :---: |
-| **gamedev-core** | `game-repo-setup` | Engine-correct `.gitignore` + Git LFS `.gitattributes` (lockable `.uasset`/`.umap`), merge-safe | ✅ |
+| **core** | `game-repo-setup` | Engine-correct `.gitignore` + Git LFS `.gitattributes` (lockable `.uasset`/`.umap`), merge-safe | ✅ |
 | | `game-feel` | Coyote time, jump buffer, hit stop, trauma screen shake, frame-rate independent smoothing (GDScript, C#, UE notes) | |
 | | `game-perf-budget` | Frame budgets, CPU vs GPU bound, profiler workflow and fixes per engine | |
-| **blender-doctor** | `blender-scene-audit` | Game-readiness audit: n-gons, negative/unapplied scale, missing UVs, non-manifold, tri budgets, missing textures | ✅ |
+| **blender** | `blender-scene-audit` | Game-readiness audit: n-gons, negative/unapplied scale, missing UVs, non-manifold, tri budgets, missing textures | ✅ |
 | | `blender-export-to-engine` | One command export with the right settings for Godot (.glb), Unity (.fbx, no -90° rotation), Unreal (.fbx) | ✅ |
-| **godot-doctor** | `godot4-gdscript` | Typed, idiomatic Godot 4 GDScript + full Godot 3 → 4 migration table | |
+| **godot** | `godot4-gdscript` | Typed, idiomatic Godot 4 GDScript + full Godot 3 → 4 migration table | |
 | | `godot-project-lint` | Static linter: Godot 3 leftovers, missing `res://` files, UID-rescued stale paths, path letter-case bugs | ✅ |
 | | `godot-headless-ci` | Headless import/test/export + GitHub Actions template that releases on tags | ✅ |
-| **unity-doctor** | `unity-project-hygiene` | Missing/orphan `.meta`, duplicate GUIDs, binary scenes, serialization mode, tracked `Library/` | ✅ |
+| **unity** | `unity-project-hygiene` | Missing/orphan `.meta`, duplicate GUIDs, binary scenes, serialization mode, tracked `Library/` | ✅ |
 | | `unity-batchmode` | Headless tests and builds with a build script that sets a real exit code | ✅ |
-| **unreal-doctor** | `unreal-cpp-gameplay` | UE5 C++ that compiles first time: GC rules, `TObjectPtr`, Enhanced Input, Build.cs modules, replication | |
+| **unreal** | `unreal-cpp-gameplay` | UE5 C++ that compiles first time: GC rules, `TObjectPtr`, Enhanced Input, Build.cs modules, replication | |
 | | `unreal-project-hygiene` | `.uproject`/modules/targets check, `.generated.h` order, raw `UObject*` without `UPROPERTY`, LFS | ✅ |
 
 The scripts use only the Python standard library (Blender scripts use `bpy`). The Godot,
@@ -47,20 +47,20 @@ Unity and Unreal checkers **don't need the engine installed**, so they run in CI
 ### Claude Code
 
 ```bash
-claude plugin marketplace add flxnsee/gamedev-doctor
-claude plugin install godot-doctor@gamedev-doctor   # also: unity-doctor, unreal-doctor, blender-doctor, gamedev-core
+claude plugin marketplace add flxnsee/gamedev-toolkit
+claude plugin install godot@gamedev-toolkit   # also: unity, unreal, blender, core
 ```
 
-Inside a session: `/plugin marketplace add flxnsee/gamedev-doctor`, then `/plugin`.
+Inside a session: `/plugin marketplace add flxnsee/gamedev-toolkit`, then `/plugin`.
 Install only the engines you use. Skills trigger automatically from their descriptions.
 
 ### Any agent that supports Agent Skills (Codex, Cursor, Gemini CLI, ...)
 
 ```bash
-npx skills add flxnsee/gamedev-doctor
+npx skills add flxnsee/gamedev-toolkit
 ```
 
-Or copy a skill folder (for example `plugins/godot-doctor/skills/godot-project-lint`)
+Or copy a skill folder (for example `plugins/godot/skills/godot-project-lint`)
 into your agent's skills directory. For Claude Code without plugins that's
 `~/.claude/skills/<skill-name>/`. Every skill follows the open
 [Agent Skills specification](https://agentskills.io/specification).
@@ -68,10 +68,10 @@ into your agent's skills directory. For Claude Code without plugins that's
 ### Just the scripts
 
 ```bash
-python plugins/godot-doctor/skills/godot-project-lint/scripts/godot_lint.py path/to/project
-python plugins/unity-doctor/skills/unity-project-hygiene/scripts/unity_meta_check.py path/to/project
-python plugins/unreal-doctor/skills/unreal-project-hygiene/scripts/ue_project_check.py path/to/project
-blender -b model.blend --python plugins/blender-doctor/skills/blender-scene-audit/scripts/scene_audit.py
+python plugins/godot/skills/godot-project-lint/scripts/godot_lint.py path/to/project
+python plugins/unity/skills/unity-project-hygiene/scripts/unity_meta_check.py path/to/project
+python plugins/unreal/skills/unreal-project-hygiene/scripts/ue_project_check.py path/to/project
+blender -b model.blend --python plugins/blender/skills/blender-scene-audit/scripts/scene_audit.py
 ```
 
 ## Try asking your agent

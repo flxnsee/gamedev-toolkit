@@ -1,33 +1,33 @@
 {
-  "name": "gamedev-doctor",
+  "name": "gamedev-toolkit",
   "description": "Game-dev skills for AI coding agents that run real scripts against your project: Blender, Godot, Unity, Unreal and engine-agnostic craft.",
   "owner": {
     "name": "flxnsee"
   },
   "plugins": [
     {
-      "name": "gamedev-core",
-      "source": "./plugins/gamedev-core",
+      "name": "core",
+      "source": "./plugins/core",
       "description": "Engine-agnostic skills: repo setup with Git LFS, game feel, performance budgets."
     },
     {
-      "name": "blender-doctor",
-      "source": "./plugins/blender-doctor",
+      "name": "blender",
+      "source": "./plugins/blender",
       "description": "Blender skills: game-readiness scene audit and one-command export to Godot, Unity or Unreal."
     },
     {
-      "name": "godot-doctor",
-      "source": "./plugins/godot-doctor",
+      "name": "godot",
+      "source": "./plugins/godot",
       "description": "Godot 4 skills: idiomatic GDScript, a project linter (Godot 3 leftovers, broken res:// paths) and headless CI."
     },
     {
-      "name": "unity-doctor",
-      "source": "./plugins/unity-doctor",
+      "name": "unity",
+      "source": "./plugins/unity",
       "description": "Unity skills: .meta/GUID hygiene checker and batchmode tests and builds."
     },
     {
-      "name": "unreal-doctor",
-      "source": "./plugins/unreal-doctor",
+      "name": "unreal",
+      "source": "./plugins/unreal",
       "description": "Unreal Engine 5 skills: C++ gameplay conventions and a project hygiene checker."
     }
   ]
