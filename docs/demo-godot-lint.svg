@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="328" viewBox="0 0 920 328" role="img" aria-label="godot_lint output: Godot 3 leftovers and broken res:// paths found in a Godot 4 project">
+<rect x="0.5" y="0.5" width="919" height="327" rx="10" fill="#0d1117" stroke="#30363d"/>
+<path d="M10.5 0.5h899a10 10 0 0 1 10 10v24h-919v-24a10 10 0 0 1 10-10z" fill="#161b22"/>
+<circle cx="22" cy="18" r="6" fill="#ff5f57"/><circle cx="42" cy="18" r="6" fill="#febc2e"/><circle cx="62" cy="18" r="6" fill="#28c840"/>
+<text x="460.0" y="22" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12" fill="#8b949e">godot-project-lint · gamedev-toolkit</text>
+<g font-family="Consolas, ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" xml:space="preserve">
+<text x="22" y="58"><tspan fill="#3fb950">$ </tspan><tspan fill="#c9d1d9">python godot_lint.py tests/fixtures/godot4_project</tspan></text>
+<text x="22" y="79"><tspan fill="#c9d1d9">Godot 4 project: 2 scripts, 1 scenes, 0 resources, 10 res:// references checked</tspan></text>
+<text x="22" y="100"><tspan fill="#f85149">16 errors</tspan><tspan fill="#c9d1d9">, </tspan><tspan fill="#d29922">1 warnings</tspan><tspan fill="#c9d1d9">, 0 info</tspan></text>
+<text x="22" y="121"><tspan fill="#f85149">  [error] </tspan><tspan fill="#79c0ff">scenes/main.tscn:4</tspan><tspan fill="#c9d1d9"> </tspan><tspan fill="#d2a8ff">path-case</tspan><tspan fill="#c9d1d9">: </tspan><tspan fill="#c9d1d9">res://art/hero.png differs in letter case from res://Art/hero.png. Work…</tspan></text>
+<text x="22" y="142"><tspan fill="#f85149">  [error] </tspan><tspan fill="#79c0ff">scenes/main.tscn:6</tspan><tspan fill="#c9d1d9"> </tspan><tspan fill="#d2a8ff">missing-resource</tspan><tspan fill="#c9d1d9">: </tspan><tspan fill="#c9d1d9">res://Art/gone.png does not exist.</tspan></text>
+<text x="22" y="163"><tspan fill="#f85149">  [error] </tspan><tspan fill="#79c0ff">scripts/player.gd:1</tspan><tspan fill="#c9d1d9"> </tspan><tspan fill="#d2a8ff">gd3-class</tspan><tspan fill="#c9d1d9">: </tspan><tspan fill="#c9d1d9">`KinematicBody2D` is a Godot 3 class. Godot 4 name: `CharacterBody2D`.</tspan></text>
+<text x="22" y="184"><tspan fill="#f85149">  [error] </tspan><tspan fill="#79c0ff">scripts/player.gd:4</tspan><tspan fill="#c9d1d9"> </tspan><tspan fill="#d2a8ff">gd3-onready</tspan><tspan fill="#c9d1d9">: </tspan><tspan fill="#c9d1d9">`onready var` is Godot 3. Use `@onready var`.</tspan></text>
+<text x="22" y="205"><tspan fill="#f85149">  [error] </tspan><tspan fill="#79c0ff">scripts/player.gd:11</tspan><tspan fill="#c9d1d9"> </tspan><tspan fill="#d2a8ff">gd3-connect</tspan><tspan fill="#c9d1d9">: </tspan><tspan fill="#c9d1d9">Old `connect(&quot;sig&quot;, self, &quot;method&quot;)`. Use `sig.connect(_method)`.</tspan></text>
+<text x="22" y="226"><tspan fill="#f85149">  [error] </tspan><tspan fill="#79c0ff">scripts/player.gd:17</tspan><tspan fill="#c9d1d9"> </tspan><tspan fill="#d2a8ff">gd3-move-and-slide</tspan><tspan fill="#c9d1d9">: </tspan><tspan fill="#c9d1d9">Godot 4 `move_and_slide()` takes no arguments: set the `velo…</tspan></text>
+<text x="22" y="247"><tspan fill="#f85149">  [error] </tspan><tspan fill="#79c0ff">scripts/player.gd:18</tspan><tspan fill="#c9d1d9"> </tspan><tspan fill="#d2a8ff">gd3-yield</tspan><tspan fill="#c9d1d9">: </tspan><tspan fill="#c9d1d9">`yield()` was removed. Use `await obj.signal_name` or `await get_tree…</tspan></text>
+<text x="22" y="268"><tspan fill="#d29922">  [warning] </tspan><tspan fill="#79c0ff">scenes/main.tscn:5</tspan><tspan fill="#c9d1d9"> </tspan><tspan fill="#d2a8ff">stale-path</tspan><tspan fill="#c9d1d9">: </tspan><tspan fill="#c9d1d9">res://Art/old_name.png does not exist, but uid://bmoved000000a is kn…</tspan></text>
+<text x="22" y="289"><tspan fill="#8b949e">  … 9 more</tspan></text>
+</g>
+</svg>
