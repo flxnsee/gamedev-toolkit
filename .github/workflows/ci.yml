@@ -23,6 +23,9 @@ jobs:
         run: python tools/validate_skills.py
       - name: Unit tests
         run: python -m unittest discover tests -v
+      - name: README demo image matches real linter output
+        if: runner.os == 'Linux'
+        run: python tools/make_demo_svg.py && git diff --exit-code docs/
 
   blender-smoke:
     # Official tarballs instead of snap: snapd on GitHub runners can hang for hours.

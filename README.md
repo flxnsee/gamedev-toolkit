@@ -2,8 +2,17 @@
 
 **The game-dev toolkit for AI coding agents: skills that know your engine, and checks that run on your real project.**
 
-Godot · Unity · Unreal · Blender · works with Claude Code, Codex, Cursor and any agent that
-supports [Agent Skills](https://agentskills.io/specification).
+[![ci](https://github.com/flxnsee/gamedev-toolkit/actions/workflows/ci.yml/badge.svg)](https://github.com/flxnsee/gamedev-toolkit/actions/workflows/ci.yml)
+[![license: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![skills: 12](https://img.shields.io/badge/skills-12-8957e5.svg)](#skills)
+[![Agent Skills](https://img.shields.io/badge/Agent%20Skills-compatible-2ea44f.svg)](https://agentskills.io/specification)
+![Godot 4](https://img.shields.io/badge/Godot-4-478cbf?logo=godotengine&logoColor=white)
+![Unity](https://img.shields.io/badge/Unity-2021.3%2B-222c37?logo=unity&logoColor=white)
+![Unreal Engine 5](https://img.shields.io/badge/Unreal-5-0e1128?logo=unrealengine&logoColor=white)
+![Blender](https://img.shields.io/badge/Blender-4.2%2B-e87d0d?logo=blender&logoColor=white)
+
+Works with Claude Code, Codex, Cursor and any agent that supports
+[Agent Skills](https://agentskills.io/specification).
 
 AI coding agents write Godot 3 code in Godot 4 projects, lose Unity `.meta` files, forget
 `UPROPERTY` on pointers, and export Blender models rotated -90°. gamedev-toolkit gives them
@@ -11,16 +20,20 @@ engine-specific know-how **plus tested scripts** that examine your actual projec
 is broken and say how to fix it. No role-play agents, no "you are a senior game designer"
 prompts: just tools that work.
 
-```text
-$ python godot_lint.py tests/fixtures/godot4_project
-Godot 4 project: 2 scripts, 1 scenes, 0 resources, 10 res:// references checked
-16 errors, 1 warnings, 0 info
-  [error] scenes/main.tscn:4 path-case: res://art/hero.png differs in letter case from res://Art/hero.png.
-          Works in the editor on Windows/macOS, fails in exported builds and on Linux.
-  [error] scripts/player.gd:1 gd3-class: `KinematicBody2D` is a Godot 3 class. Godot 4 name: `CharacterBody2D`.
-  [error] scripts/player.gd:4 gd3-onready: `onready var` is Godot 3. Use `@onready var`.
-  ...
+<p align="center">
+  <img src="docs/demo-godot-lint.svg" alt="godot-project-lint finds Godot 3 leftovers, a path letter-case bug and missing resources in a Godot 4 project" width="920">
+</p>
+
+<p align="center"><sub>Real output of <code>godot-project-lint</code> on the test fixture. Regenerate with <code>python tools/make_demo_svg.py</code>.</sub></p>
+
+**Quick start** (Claude Code):
+
+```bash
+claude plugin marketplace add flxnsee/gamedev-toolkit
+claude plugin install godot@gamedev-toolkit
 ```
+
+Then ask: *"check my Godot project before I export it"*. More options in [Install](#install).
 
 ## Skills
 

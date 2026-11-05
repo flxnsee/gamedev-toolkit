@@ -18,4 +18,6 @@ All notable changes to this project are documented here. Versions follow
   `unity-batchmode` with a build script.
 - **unreal**: `unreal-cpp-gameplay`, `unreal-project-hygiene` (uproject, modules,
   targets, header lint, Git LFS).
-- Skill validator, fixture-based tests, Blender smoke test, CI on Linux/Windows/macOS.
+- Skill validator, fixture-based tests, CI on Linux/Windows/macOS (Python 3.10+), Blender
+  smoke test on Blender 4.2 LTS and 5.2 LTS.
+- README demo image rendered from real linter output and a social preview image.
