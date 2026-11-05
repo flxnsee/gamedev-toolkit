@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "description": "Blender skills: game-readiness scene audit and one-command export to Godot, Unity or Unreal.",
   "author": {
-    "name": "gamesmith contributors"
+    "name": "flxnsee",
+    "url": "https://github.com/flxnsee"
   },
   "license": "MIT",
   "keywords": [
@@ -14,5 +15,7 @@
     "gltf",
     "fbx",
     "3d"
-  ]
+  ],
+  "homepage": "https://github.com/flxnsee/gamesmith",
+  "repository": "https://github.com/flxnsee/gamesmith"
 }
