@@ -2,7 +2,7 @@
 name: godot-project-lint
 description: Lints a Godot 4 project without opening the editor - finds Godot 3 GDScript that breaks in Godot 4 (onready, export, yield, setget, old connect, KinematicBody2D, move_and_slide with arguments, renamed functions), res:// paths to missing files, stale paths rescued by UID, and path letter-case mismatches that work on Windows but break exported builds. Use after porting from Godot 3, after AI-generated or copy-pasted GDScript, before exporting a build, when the editor shows "parse error" or "failed to load resource", or as a CI check.
 license: MIT
-compatibility: Python 3.9+, standard library only. Godot itself is not required.
+compatibility: Python 3.10+, standard library only. Godot itself is not required.
 metadata:
   author: gamedev-toolkit
   version: "0.1.0"
